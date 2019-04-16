@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script>
+
+function sendForm(e){
+    e.preventDefault();
+
+    // get form data
+    const form = document.getElementById('messageForm');
+    var data = new URLSearchParams();
+    for(const pair of new FormData(form)){
+        data.append(pair[0], pair[1]);
+    }
+
+    // post data to backend    
+    url = '/registrationToken';
+
+    fetch(url, {
+        method: 'post',
+        body: data,
+    })
+    .then((res)=>{
+        console.log('success');
+    })
+    .catch( error => console.log(error))
+} // end sendForm
+
+function loader(){
+    const form = document.getElementById('messageForm');
+    form.addEventListener('submit', sendForm);
+}
+
+</script>
+
+</head>
+<body onload='loader()'>
+<form id='messageForm'>
+    <label>
+        Registration Token 
+        <input type='text' id='tokenText' name='tokenText' style='padding-left: 10px;'/>
+    </label>
+    <input type='submit' />
+
+</form>
+
+</body>
+</html>
