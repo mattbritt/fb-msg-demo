@@ -1,0 +1,1 @@
+{"version":2,"name":"fb-msg-demo","builds":[{"src":"**/*.js","use":"@now/node"}]}
